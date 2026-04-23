@@ -40,3 +40,7 @@ Xəta: Ad None (boş) olduqda
 Hər iki arqument boş string olduqda:
     >>> say_my_name("", "")
     My name is
+
+Normal hal: Yalnız ad ilə
+    >>> say_my_name("Walter")
+    My name is Walter

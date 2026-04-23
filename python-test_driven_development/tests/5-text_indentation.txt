@@ -1,11 +1,10 @@
-cat << 'EOF' > tests/5-text_indentation.txt
 ===============================
 How to use text_indentation
 ===============================
 
     >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Normal Test:
+Normal istifadə:
     >>> text_indentation("Hello. How are you? Fine: Thanks.")
     Hello.
     <BLANKLINE>
@@ -15,7 +14,7 @@ Normal Test:
     <BLANKLINE>
     Thanks.
 
-Boşluqların təmizlənməsi testi:
+Sətir başındakı boşluqların təmizlənməsi:
     >>> text_indentation("Start.    Spaces after dot.")
     Start.
     <BLANKLINE>
@@ -26,4 +25,6 @@ Xəta halları:
     Traceback (most recent call last):
         ...
     TypeError: text must be a string
-EOF
+
+Boş string:
+    >>> text_indentation("")

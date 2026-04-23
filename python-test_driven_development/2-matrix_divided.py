@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def matrix_divided(matrix, div):
     """
     Matrisin bütün elementlərini div-ə bölür və yeni matris qaytarır.

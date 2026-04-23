@@ -1,30 +1,26 @@
 #!/usr/bin/python3
-"""
-Bu modul say_my_name funksiyasını ehtiva edir.
-Funksiya ad və soyadı ekrana çıxarmaq üçün nəzərdə tutulub.
-"""
+"""Module that defines a function to indent text."""
 
 
-def say_my_name(first_name, last_name=""):
-    """
-    'My name is <first name> <last name>' formatında çap edir.
+def text_indentation(text):
+    """Prints a text with 2 new lines after '.', '?' and ':' characters."""
 
-    Arqumentlər:
-        first_name (str): İstifadəçinin adı.
-        last_name (str): İstifadəçinin soyadı (default olaraq boş string).
+    if not isinstance(text, str):
+        raise TypeError("text must be a string")
 
-    Xətalar:
-        TypeError: Əgər daxil edilən arqumentlər string deyilsə.
-    """
+    i = 0
+    n = len(text)
 
-    # first_name-in string olub-olmadığını yoxlayırıq
-    if not isinstance(first_name, str):
-        raise TypeError("first_name must be a string")
+    while i < n:
+        print(text[i], end="")
 
-    # last_name-in string olub-olmadığını yoxlayırıq
-    if not isinstance(last_name, str):
-        raise TypeError("last_name must be a string")
+        if text[i] in ".?:":
+            print("\n")
 
-    # Çap zamanı format istifadə etmək sondakı boşluqların
-    # düzgün tənzimlənməsini təmin edir.
-    print("My name is {} {}".format(first_name, last_name))
+            # skip spaces after punctuation
+            i += 1
+            while i < n and text[i] == " ":
+                i += 1
+            continue
+
+        i += 1

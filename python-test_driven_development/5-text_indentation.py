@@ -8,16 +8,16 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    skip_space = False
+    separators = ".?:"
+    line = ""
 
     for char in text:
-        if skip_space and char == " ":
-            continue
+        if char in separators:
+            print(line.strip())
+            print()
+            line = ""
+        else:
+            line += char
 
-        skip_space = False
-
-        print(char, end="")
-
-        if char in ".?:":
-            print("\n")
-            skip_space = True
+    if line:
+        print(line.strip())

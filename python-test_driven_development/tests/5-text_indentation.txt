@@ -1,33 +1,30 @@
->>> text_indentation = __import__('5-text_indentation').text_indentation
+===============================
+How to use text_indentation
+===============================
 
->>> text_indentation("Hello. World? Yes: OK")
-Hello.
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-World?
+Normal istifadə:
+    >>> text_indentation("Hello. How are you? Fine: Thanks.")
+    Hello.
+    <BLANKLINE>
+    How are you?
+    <BLANKLINE>
+    Fine:
+    <BLANKLINE>
+    Thanks.
 
-Yes:
+Sətir başındakı boşluqların təmizlənməsi:
+    >>> text_indentation("Start.    Spaces after dot.")
+    Start.
+    <BLANKLINE>
+    Spaces after dot.
 
-OK
+Xəta halları:
+    >>> text_indentation(12345)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
 
->>> text_indentation("Holberton school. Is fun?Yes: of course")
-Holberton school.
-
-Is fun?
-
-Yes:
-
-of course
-
->>> text_indentation("A.B:C?")
-A.
-
-B:
-
-C?
-
->>> text_indentation(" Hello. World? ")
-Hello.
-
-World?
-
->>> text_indentation("")
+Boş string:
+    >>> text_indentation("")

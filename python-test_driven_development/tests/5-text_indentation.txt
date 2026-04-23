@@ -1,0 +1,33 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Hello. World? Yes: OK")
+Hello.
+
+World?
+
+Yes:
+
+OK
+
+>>> text_indentation("Holberton school.  Is fun?Yes: of course")
+Holberton school.
+
+Is fun?
+
+Yes:
+
+of course
+
+>>> text_indentation("A.B:C?")
+A.
+
+B:
+
+C?
+
+>>> text_indentation("   Hello.   World?  ")
+Hello.
+
+World?
+
+>>> text_indentation("")

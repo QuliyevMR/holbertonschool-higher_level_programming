@@ -47,3 +47,8 @@ Orijinal matrisin dəyişmədiyini yoxlayaq:
     >>> new_matrix = matrix_divided(matrix, 2)
     >>> matrix
     [[1, 2], [3, 4]]
+
+Sonsuzluğa bölmə testi:
+    >>> matrix = [[10, 20], [30, 40]]
+    >>> matrix_divided(matrix, float('inf'))
+    [[0.0, 0.0], [0.0, 0.0]]

@@ -1,4 +1,3 @@
-cat << 'EOF' > tests/5-text_indentation.txt
 ===============================
 How to use text_indentation
 ===============================
@@ -26,4 +25,3 @@ Xəta halı:
     Traceback (most recent call last):
         ...
     TypeError: text must be a string
-EOF

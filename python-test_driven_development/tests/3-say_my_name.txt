@@ -2,27 +2,24 @@
 How to use say_my_name
 ===============================
 
-    >>> say_my_name = __import__('3-say_my_name').say_my_name
+>>> say_my_name("John", "Smith")
+My name is John Smith
 
-Normal hal:
-    >>> say_my_name("John", "Smith")
-    My name is John Smith
+>>> say_my_name("Walter", "White")
+My name is Walter White
 
-Ad və soyad boş olduqda (2 boşluq yaranmalıdır):
-    >>> say_my_name("", "")
-    My name is  
+>>> say_my_name("Bob")
+My name is Bob 
 
-Yalnız ad verildikdə (sonda 1 boşluq qalmalıdır):
-    >>> say_my_name("Walter")
-    My name is Walter 
+>>> say_my_name("", "")
+My name is  
 
-Xəta halları:
-    >>> say_my_name(12, "White")
-    Traceback (most recent call last):
-        ...
-    TypeError: first_name must be a string
+>>> say_my_name(12, "White")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
 
-    >>> say_my_name("Walter", [1, 2])
-    Traceback (most recent call last):
-        ...
-    TypeError: last_name must be a string
+>>> say_my_name("John", 12)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string

@@ -1,26 +1,31 @@
 #!/usr/bin/python3
-"""Module that defines a function to indent text."""
+"""
+Bu modul mətni formatlaşdıran funksiyanı ehtiva edir.
+Xüsusi simvollardan sonra yeni sətirlər əlavə olunur.
+"""
 
 
 def text_indentation(text):
-    """Prints a text with 2 new lines after '.', '?' and ':' characters."""
-
+    """
+    '.', '?' və ':' simvollarından sonra 2 yeni sətir çap edir.
+    Sətir başındakı və sonundakı boşluqlar təmizlənir.
+    """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    i = 0
-    n = len(text)
-
-    while i < n:
-        print(text[i], end="")
-
-        if text[i] in ".?:":
-            print("\n")
-
-            # skip spaces after punctuation
-            i += 1
-            while i < n and text[i] == " ":
-                i += 1
-            continue
-
-        i += 1
+    # flag = 0 o deməkdir ki, biz hazırda sətir başındakı boşluqları atırıq
+    flag = 0
+    for a in text:
+        if flag == 0:
+            if a == ' ':
+                continue
+            else:
+                flag = 1
+        
+        if flag == 1:
+            if a in "?:.":
+                print(a)
+                print()
+                flag = 0
+            else:
+                print(a, end="")

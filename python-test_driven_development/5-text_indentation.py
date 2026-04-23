@@ -1,42 +1,30 @@
 #!/usr/bin/python3
 """
-Bu modul mətnin formatlaşdırılması funksiyasini ehtiva edir.
-Xüsusi simvollardan sonra yeni sətir əlavə edir.
+Bu modul say_my_name funksiyasını ehtiva edir.
+Funksiya ad və soyadı ekrana çıxarmaq üçün nəzərdə tutulub.
 """
 
 
-def text_indentation(text):
+def say_my_name(first_name, last_name=""):
     """
-    Mətndə '.', '?' və ':' simvollarından sonra 2 yeni sətir çap edir.
+    'My name is <first name> <last name>' formatında çap edir.
 
     Arqumentlər:
-        text (str): Formatlaşdırılacaq mətn.
+        first_name (str): İstifadəçinin adı.
+        last_name (str): İstifadəçinin soyadı (default olaraq boş string).
 
     Xətalar:
-        TypeError: Əgər 'text' string deyilsə.
+        TypeError: Əgər daxil edilən arqumentlər string deyilsə.
     """
 
-    # Tip yoxlanışı
-    if not isinstance(text, str):
-        raise TypeError("text must be a string")
+    # first_name-in string olub-olmadığını yoxlayırıq
+    if not isinstance(first_name, str):
+        raise TypeError("first_name must be a string")
 
-    # Simvolların yoxlanması üçün siyahı
-    separators = [".", "?", ":"]
+    # last_name-in string olub-olmadığını yoxlayırıq
+    if not isinstance(last_name, str):
+        raise TypeError("last_name must be a string")
 
-    # Mətni simvol-simvol gəzirik
-    # skip_space dəyişəni sətir başındakı boşluqları tutmaq üçündür
-    skip_space = True
-
-    for char in text:
-        # Əgər sətir başındayıqsa və simvol boşluqdursa, onu keçirik
-        if skip_space and char == " ":
-            continue
-
-        # Boşluq olmayan simvol tapdıqda çap edirik və skip_space-i söndürürük
-        print(char, end="")
-        skip_space = False
-
-        # Əgər simvol xüsusi ayırıcıdırsa, 2 yeni sətir çap edirik
-        if char in separators:
-            print("\n")
-            skip_space = True
+    # Çap zamanı format istifadə etmək sondakı boşluqların
+    # düzgün tənzimlənməsini təmin edir.
+    print("My name is {} {}".format(first_name, last_name))

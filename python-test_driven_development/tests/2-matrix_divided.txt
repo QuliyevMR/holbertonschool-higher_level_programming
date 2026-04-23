@@ -52,3 +52,9 @@ Sonsuzluğa bölmə testi:
     >>> matrix = [[10, 20], [30, 40]]
     >>> matrix_divided(matrix, float('inf'))
     [[0.0, 0.0], [0.0, 0.0]]
+
+Xəta: Funksiyaya yalnız 1 arqument verildikdə
+    >>> matrix_divided(matrix)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix_divided() missing 1 required positional argument: 'div'

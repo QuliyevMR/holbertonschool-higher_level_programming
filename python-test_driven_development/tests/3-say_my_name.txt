@@ -1,0 +1,42 @@
+===============================
+How to use say_my_name
+===============================
+
+Funksiyanı import edirik:
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Normal hal: Ad və Soyad ilə
+    >>> say_my_name("John", "Smith")
+    My name is John Smith
+
+Normal hal: Yalnız ad ilə (soyad default boş qalır)
+    >>> say_my_name("Walter")
+    My name is Walter 
+
+Xəta: Ad string deyil (məsələn, rəqəmdir)
+    >>> say_my_name(12, "White")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+Xəta: Soyad string deyil
+    >>> say_my_name("Walter", [1, 2])
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+Xəta: Heç bir arqument verilmədikdə
+    >>> say_my_name()
+    Traceback (most recent call last):
+        ...
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+Xəta: Ad None (boş) olduqda
+    >>> say_my_name(None, "White")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+Hər iki arqument boş string olduqda:
+    >>> say_my_name("", "")
+    My name is

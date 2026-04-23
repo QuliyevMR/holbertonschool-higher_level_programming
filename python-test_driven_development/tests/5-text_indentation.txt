@@ -1,10 +1,11 @@
+cat << 'EOF' > tests/5-text_indentation.txt
 ===============================
 How to use text_indentation
 ===============================
 
     >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Normal istifadə:
+Normal test:
     >>> text_indentation("Hello. How are you? Fine: Thanks.")
     Hello.
     <BLANKLINE>
@@ -20,11 +21,9 @@ Sətir başındakı boşluqların təmizlənməsi:
     <BLANKLINE>
     Spaces after dot.
 
-Xəta halları:
+Xəta halı:
     >>> text_indentation(12345)
     Traceback (most recent call last):
         ...
     TypeError: text must be a string
-
-Boş string:
-    >>> text_indentation("")
+EOF

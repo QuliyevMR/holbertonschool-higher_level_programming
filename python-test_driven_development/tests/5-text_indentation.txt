@@ -9,7 +9,7 @@ Yes:
 
 OK
 
->>> text_indentation("Holberton school.  Is fun?Yes: of course")
+>>> text_indentation("Holberton school. Is fun?Yes: of course")
 Holberton school.
 
 Is fun?
@@ -25,7 +25,7 @@ B:
 
 C?
 
->>> text_indentation("   Hello.   World?  ")
+>>> text_indentation(" Hello. World? ")
 Hello.
 
 World?

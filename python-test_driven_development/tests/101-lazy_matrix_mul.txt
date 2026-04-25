@@ -30,3 +30,8 @@ Invalid element types:
     Traceback (most recent call last):
     ...
     TypeError: invalid string for provided number format
+
+>>> lazy_matrix_mul("Holberton", [[5, 6], [7, 8]])
+Traceback (most recent call last):
+    ...
+ValueError: Scalar operands are not allowed, use '*' instead

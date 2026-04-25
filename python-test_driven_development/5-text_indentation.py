@@ -1,42 +1,37 @@
 #!/usr/bin/python3
-"""
-Bu modul mətnin formatlaşdırılması funksiyasini ehtiva edir.
-Xüsusi simvollardan sonra yeni sətir əlavə edir.
-"""
+"""Module for text indentation"""
 
 
 def text_indentation(text):
     """
-    Mətndə '.', '?' və ':' simvollarından sonra 2 yeni sətir çap edir.
-
-    Arqumentlər:
-        text (str): Formatlaşdırılacaq mətn.
-
-    Xətalar:
-        TypeError: Əgər 'text' string deyilsə.
+    Prints a text with 2 new lines after each '.', '?', and ':'
+    
+    Args:
+        text (str): The text to be formatted.
+        
+    Raises:
+        TypeError: If text is not a string.
     """
-
-    # Tip yoxlanışı
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    # Simvolların yoxlanması üçün siyahı
-    separators = [".", "?", ":"]
+    # Simvolları yoxlamaq üçün siyahı
+    special_chars = ".?:"
+    
+    i = 0
+    # Mətnin əvvəlindəki boşluqları keçirik
+    while i < len(text) and text[i] == ' ':
+        i += 1
 
-    # Mətni simvol-simvol gəzirik
-    # skip_space dəyişəni sətir başındakı boşluqları tutmaq üçündür
-    skip_space = True
-
-    for char in text:
-        # Əgər sətir başındayıqsa və simvol boşluqdursa, onu keçirik
-        if skip_space and char == " ":
-            continue
-
-        # Boşluq olmayan simvol tapdıqda çap edirik və skip_space-i söndürürük
-        print(char, end="")
-        skip_space = False
-
-        # Əgər simvol xüsusi ayırıcıdırsa, 2 yeni sətir çap edirik
-        if char in separators:
+    while i < len(text):
+        print(text[i], end="")
+        
+        # Əgər simvol xüsusidirsə, 2 yeni sətir at və növbəti boşluqları ötür
+        if text[i] in special_chars:
             print("\n")
-            skip_space = True
+            i += 1
+            while i < len(text) and text[i] == ' ':
+                i += 1
+            continue
+        
+        i += 1

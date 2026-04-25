@@ -1,15 +1,20 @@
 #!/usr/bin/python3
 """
-Bu modul Kvadrat klassını təyin edir.
+This module defines a Square class.
+It focuses on the basics of OOP and private attributes.
 """
+
+
 class Square:
     """
-    Kvadratı təmsil edən klass.
+    A class that represents a square.
     """
+
     def __init__(self, size):
         """
-        Kvadrat yaradılan zaman işə düşən funksiya (constructor).
+        Initializes the square with a given size.
+
         Args:
-            size: Kvadratın tərəfinin ölçüsü.
+            size (int): The width and height of the square.
         """
         self.__size = size

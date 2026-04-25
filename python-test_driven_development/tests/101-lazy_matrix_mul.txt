@@ -1,42 +1,49 @@
 ======================================
-Testing 101-lazy_matrix_mul
+Tests for 101-lazy_matrix_mul
 ======================================
 
 Importing the function:
     >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
 
-Standard matrix multiplication:
+Test 1: Square matrices
     >>> print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
     [[ 7 10]
      [15 22]]
 
+Test 2: Rectangular matrices
     >>> print(lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
     [[13 16]]
 
-Invalid shapes (NumPy raises ValueError):
+Test 3: Different shapes that are compatible
+    >>> print(lazy_matrix_mul([[1, 2, 3], [4, 5, 6]], [[7, 8], [9, 1], [2, 3]]))
+    [[31 19]
+     [85 55]]
+
+Test 4: Identity matrix
+    >>> print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 0], [0, 1]]))
+    [[1 2]
+     [3 4]]
+
+Test 5: Scalar multiplication failure (NumPy expects arrays/matrices)
+    >>> lazy_matrix_mul(5, [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    ValueError: Scalar operands are not allowed, use '*' instead
+
+Test 6: Incompatible dimensions
     >>> lazy_matrix_mul([[1, 2]], [[1, 2]])
     Traceback (most recent call last):
     ...
-    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 1 is different from 2)
+    ValueError: shapes (1,2) and (1,2) not aligned: 2 (dim 1) != 1 (dim 0)
 
-Not a list/matrix (NumPy handles scalar/string errors):
-    >>> lazy_matrix_mul("Holberton", [[1, 2]])
+Test 7: Empty matrices
+    >>> lazy_matrix_mul([], [])
     Traceback (most recent call last):
     ...
-    ValueError: matmul: Input operand 0 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+    ValueError: shapes (0,) and (0,) not aligned: 0 (dim 0) != 0 (dim 0)
 
-Invalid element types:
-    >>> lazy_matrix_mul([[1, "2"]], [[3, 4], [5, 6]])
+Test 8: Invalid types (Strings)
+    >>> lazy_matrix_mul([["a", "b"]], [["c", "d"]])
     Traceback (most recent call last):
     ...
-    TypeError: invalid string for provided number format
-
->>> lazy_matrix_mul("Holberton", [[5, 6], [7, 8]])
-Traceback (most recent call last):
-    ...
-ValueError: Scalar operands are not allowed, use '*' instead
-
->>> lazy_matrix_mul("Holberton", [[5, 6], [7, 8]])
-Traceback (most recent call last):
-    ...
-ValueError: Scalar operands are not allowed, use '*' instead
+    TypeError: invalid data type for einsum

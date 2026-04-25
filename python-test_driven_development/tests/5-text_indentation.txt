@@ -1,28 +1,33 @@
-===============================
-How to use text_indentation
-===============================
+The ``5-text_indentation`` module
+=================================
 
+Using ``text_indentation``
+--------------------------
+
+Import the function:
     >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Normal test:
-    >>> text_indentation("Hello. How are you? Fine: Thanks.")
+Normal string:
+    >>> text_indentation("Hello. World? Fine: Done")
     Hello.
     <BLANKLINE>
-    How are you?
+    World?
     <BLANKLINE>
     Fine:
     <BLANKLINE>
-    Thanks.
+    Done
 
-Sətir başındakı boşluqların təmizlənməsi:
-    >>> text_indentation("Start.    Spaces after dot.")
-    Start.
-    <BLANKLINE>
-    Spaces after dot.
->>> text_indentation("No special characters here")
-    No special characters here
-Xəta halı:
-    >>> text_indentation(nine)
+Error handling:
+    >>> text_indentation(123)
     Traceback (most recent call last):
         ...
     TypeError: text must be a string
+
+Multiple spaces:
+    >>> text_indentation("Wait.    Check this out?   Cool.")
+    Wait.
+    <BLANKLINE>
+    Check this out?
+    <BLANKLINE>
+    Cool.
+    <BLANKLINE>

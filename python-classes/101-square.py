@@ -7,6 +7,7 @@ class Square:
 
     def __init__(self, size=0, position=(0, 0)):
         """Yeni Kvadrat yaradılır.
+
         Args:
             size (int): Kvadratın ölçüsü.
             position (int, int): Kvadratın koordinatları.
@@ -40,11 +41,12 @@ class Square:
                 len(value) != 2 or
                 not all(isinstance(num, int) for num in value) or
                 not all(num >= 0 for num in value)):
-            raise TypeError("position must be a tuple of 2 positive integers")
+            # Tapşırıqdakı xüsusi tələb: "integer" (tək halda)
+            raise TypeError("position must be a tuple of 2 positive integer")
         self.__position = value
 
     def area(self):
-        """Kvadratın sahəsini qaytarır ($size^2$)."""
+        """Kvadratın sahəsini qaytarır."""
         return self.__size ** 2
 
     def my_print(self):
@@ -52,21 +54,17 @@ class Square:
         print(self.__str__())
 
     def __str__(self):
-        """Kvadratın string təmsilini (representation) qaytarır.
-        print(instance) çağırıldıqda bu metod işə düşür.
-        """
-        res = ""
+        """Kvadratın string təmsilini qaytarır."""
         if self.__size == 0:
-            return res
+            return ""
 
-        # Y oxu üzrə boşluqlar (yeni sətirlər)
-        res += "\n" * self.__position[1]
+        res = []
+        # Y oxu (yeni sətirlər)
+        for _ in range(self.__position[1]):
+            res.append("")
 
-        # Kvadratın sətirlərini qururuq
-        for i in range(self.__size):
-            res += " " * self.__position[0]
-            res += "#" * self.__size
-            if i != self.__size - 1:
-                res += "\n"
-        
-        return res
+        # Kvadratın sətirləri
+        for _ in range(self.__size):
+            res.append(" " * self.__position[0] + "#" * self.__size)
+
+        return "\n".join(res)

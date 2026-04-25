@@ -9,7 +9,7 @@ class Rectangle:
     Represents a rectangle.
 
     Attributes:
-        number_of_instances (int): The number of active Rectangle instances.
+        number_of_instances (int): The number of active instances.
         print_symbol (any): The symbol used for string representation.
     """
 
@@ -17,7 +17,7 @@ class Rectangle:
     print_symbol = "#"
 
     def __init__(self, width=0, height=0):
-        """Initializes a new Rectangle and increments the instance counter."""
+        """Initializes a new Rectangle and increments the counter."""
         self.width = width
         self.height = height
         Rectangle.number_of_instances += 1
@@ -61,12 +61,10 @@ class Rectangle:
         return (self.__width * 2) + (self.__height * 2)
 
     def __str__(self):
-        """Returns a string representation of the rectangle using print_symbol."""
+        """Returns a string representation of the rectangle."""
         if self.__width == 0 or self.__height == 0:
             return ""
-        
-        # Multiply the string representation of print_symbol by the width
-        # and join it with newlines for the height.
+
         row = str(self.print_symbol) * self.__width
         rect_lines = [row for _ in range(self.__height)]
         return "\n".join(rect_lines)
@@ -76,6 +74,6 @@ class Rectangle:
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
-        """Decrements the instance counter and prints a deletion message."""
+        """Decrements the counter and prints a deletion message."""
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")

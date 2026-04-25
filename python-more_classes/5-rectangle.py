@@ -1,61 +1,68 @@
 #!/usr/bin/python3
+"""
+This module defines a Rectangle class.
+"""
+
+
 class Rectangle:
-    """Defines a rectangle"""
+    """Represents a rectangle."""
 
     def __init__(self, width=0, height=0):
+        """Initializes the rectangle with optional width and height."""
         self.width = width
         self.height = height
 
-    # WIDTH
     @property
     def width(self):
+        """Retrieves the width."""
         return self.__width
 
     @width.setter
     def width(self, value):
-        if type(value) is not int:
+        """Sets the width with type and value validation."""
+        if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
             raise ValueError("width must be >= 0")
         self.__width = value
 
-    # HEIGHT
     @property
     def height(self):
+        """Retrieves the height."""
         return self.__height
 
     @height.setter
     def height(self, value):
-        if type(value) is not int:
+        """Sets the height with type and value validation."""
+        if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
 
-    # AREA
     def area(self):
+        """Returns the rectangle area."""
         return self.__width * self.__height
 
-    # PERIMETER
     def perimeter(self):
+        """Returns the rectangle perimeter."""
         if self.__width == 0 or self.__height == 0:
             return 0
-        return 2 * (self.__width + self.__height)
+        return (self.__width * 2) + (self.__height * 2)
 
-    # STRING
     def __str__(self):
+        """Returns a string representation of the rectangle using #."""
         if self.__width == 0 or self.__height == 0:
             return ""
+        rect_str = []
+        for i in range(self.__height):
+            rect_str.append("#" * self.__width)
+        return "\n".join(rect_str)
 
-        rect = []
-        for _ in range(self.__height):
-            rect.append("#" * self.__width)
-        return "\n".join(rect)
-
-    # REPR
     def __repr__(self):
+        """Returns a string representation to recreate the instance."""
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
-    # DESTRUCTOR
     def __del__(self):
+        """Prints a message when the instance is deleted."""
         print("Bye rectangle...")

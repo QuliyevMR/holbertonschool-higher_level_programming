@@ -1,0 +1,33 @@
+Bu "MyList" sinfi üçün doctest nümunəsidir.
+Gəlin əvvəlcə modulu import edək:
+>>> MyList = __import__('1-my_list').MyList
+
+İndi bir obyekt yaradaq və elementlər əlavə edək:
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+
+Orijinal siyahını çap edək:
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+
+İndi isə sıralanmış halda çap edək:
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+
+Yoxlayaq görək orijinal siyahı dəyişməyib ki?
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+
+Boş siyahı ilə yoxlayaq:
+>>> empty_list = MyList()
+>>> empty_list.print_sorted()
+[]
+
+Mənfi ədədlərlə yoxlayaq:
+>>> neg_list = MyList([10, -5, 0, 2])
+>>> neg_list.print_sorted()
+[-5, 0, 2, 10]

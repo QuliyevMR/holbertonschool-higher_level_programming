@@ -6,7 +6,7 @@ Bu modul obyektin miras alma (inheritance) vəziyyətini yoxlayır.
 
 def inherits_from(obj, a_class):
     """
-    Obyektin bir sinifdən (birbaşa və ya dolayısı ilə) 
+    Obyektin bir sinifdən (birbaşa və ya dolayısı ilə)
     miras alıb-almadığını yoxlayır.
 
     Args:

@@ -10,7 +10,6 @@ class BaseGeometry:
     def area(self):
         """
         Sahəni hesablayır.
-        
         Raises:
             Exception: Əgər alt sinif bu metodu implement etməyibsə.
         """

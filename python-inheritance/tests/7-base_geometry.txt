@@ -1,0 +1,38 @@
+Bu "BaseGeometry" sinfi üçün doctest nümunəsidir.
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry()
+
+Düzgün dəyərlər veriləndə heç bir xəta baş verməməlidir:
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
+
+Səhv tip (string) veriləndə TypeError qaytarmalıdır:
+>>> bg.integer_validator("name", "John")
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
+
+Səhv tip (float) veriləndə TypeError qaytarmalıdır:
+>>> bg.integer_validator("pi", 3.14)
+Traceback (most recent call last):
+    ...
+TypeError: pi must be an integer
+
+Səhv tip (boolean) veriləndə TypeError qaytarmalıdır (Tələ!):
+>>> bg.integer_validator("is_valid", True)
+Traceback (most recent call last):
+    ...
+TypeError: is_valid must be an integer
+
+Sıfır veriləndə ValueError qaytarmalıdır:
+>>> bg.integer_validator("age", 0)
+Traceback (most recent call last):
+    ...
+ValueError: age must be greater than 0
+
+Mənfi dəyər veriləndə ValueError qaytarmalıdır:
+>>> bg.integer_validator("distance", -4)
+Traceback (most recent call last):
+    ...
+ValueError: distance must be greater than 0

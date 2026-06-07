@@ -6,9 +6,9 @@ class MyInt(int):
     """int klassının == və != operatorlarını tərsinə işlədən asi klass."""
 
     def __eq__(self, other):
-        """== operatorunun davranışını tərsinə çevirir (bərabərdirsə False)."""
+        """== operatorunun davranışını tərsinə çevirir (bərabərsə False)."""
         return super().__ne__(other)
 
     def __ne__(self, other):
-        """!= operatorunun davranışını tərsinə çevirir (bərabər deyilsə False)."""
+        """!= operatorunun davranışını tərsinə çevirir (bərabərsə True)."""
         return super().__eq__(other)

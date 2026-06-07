@@ -1,22 +1,22 @@
 #!/usr/bin/python3
-"""
-Contains the class Rectangle that inherits from BaseGeometry.
-"""
+"""BaseGeometry-dən miras alan Rectangle klassını təyin edən modul."""
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
-    """A representation of a rectangle using BaseGeometry."""
+    """BaseGeometry əsasında düzbucaqlını təmsil edən klass."""
 
     def __init__(self, width, height):
-        """
-        Initializes the rectangle.
+        """Rectangle klassının init metodu.
 
         Args:
-            width (int): The width of the rectangle.
-            height (int): The height of the rectangle.
+            width (int): Düzbucaqlının eni.
+            height (int): Düzbucaqlının hündürlüyü.
         """
+        # Əvvəlcə integer_validator ilə dəyərləri yoxlayırıq
         self.integer_validator("width", width)
-        self.__width = width
         self.integer_validator("height", height)
+
+        # Yoxlanışdan keçərsə, private olaraq mənimsədirik
+        self.__width = width
         self.__height = height

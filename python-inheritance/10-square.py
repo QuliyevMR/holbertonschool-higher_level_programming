@@ -2,13 +2,12 @@
 """Rectangle-dan miras alan Square klassını təyin edən modul."""
 Rectangle = __import__('9-rectangle').Rectangle
 
-
 class Square(Rectangle):
     """Rectangle əsasında kvadratı təmsil edən klass."""
 
     def __init__(self, size):
         """Square klassının init metodu.
-
+        
         Args:
             size (int): Kvadratın tərəfinin ölçüsü.
         """

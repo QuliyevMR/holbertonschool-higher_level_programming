@@ -1,38 +1,43 @@
-Bu "BaseGeometry" sinfi üçün doctest nümunəsidir.
+======================================
+How to use 7-base_geometry.py module
+======================================
 
->>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
->>> bg = BaseGeometry()
+Importing the BaseGeometry class from the module:
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-Düzgün dəyərlər veriləndə heç bir xəta baş verməməlidir:
->>> bg.integer_validator("my_int", 12)
->>> bg.integer_validator("width", 89)
+Creating an instance of BaseGeometry:
+    >>> bg = BaseGeometry()
 
-Səhv tip (string) veriləndə TypeError qaytarmalıdır:
->>> bg.integer_validator("name", "John")
-Traceback (most recent call last):
-    ...
-TypeError: name must be an integer
+Testing integer_validator with valid inputs:
+    >>> bg.integer_validator("my_int", 12)
+    >>> bg.integer_validator("width", 89)
 
-Səhv tip (float) veriləndə TypeError qaytarmalıdır:
->>> bg.integer_validator("pi", 3.14)
-Traceback (most recent call last):
-    ...
-TypeError: pi must be an integer
+Testing area() method which should raise an Exception:
+    >>> bg.area()
+    Traceback (most recent call last):
+    Exception: area() is not implemented
 
-Səhv tip (boolean) veriləndə TypeError qaytarmalıdır (Tələ!):
->>> bg.integer_validator("is_valid", True)
-Traceback (most recent call last):
-    ...
-TypeError: is_valid must be an integer
+Testing integer_validator with non-integer type (string):
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+    TypeError: name must be an integer
 
-Sıfır veriləndə ValueError qaytarmalıdır:
->>> bg.integer_validator("age", 0)
-Traceback (most recent call last):
-    ...
-ValueError: age must be greater than 0
+Testing integer_validator with boolean type (should fail since it's not a strict int):
+    >>> bg.integer_validator("is_active", True)
+    Traceback (most recent call last):
+    TypeError: is_active must be an integer
 
-Mənfi dəyər veriləndə ValueError qaytarmalıdır:
->>> bg.integer_validator("distance", -4)
-Traceback (most recent call last):
-    ...
-ValueError: distance must be greater than 0
+Testing integer_validator with float type:
+    >>> bg.integer_validator("weight", 75.5)
+    Traceback (most recent call last):
+    TypeError: weight must be an integer
+
+Testing integer_validator with value equal to 0:
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ValueError: age must be greater than 0
+
+Testing integer_validator with negative value:
+    >>> bg.integer_validator("distance", -4)
+    Traceback (most recent call last):
+    ValueError: distance must be greater than 0

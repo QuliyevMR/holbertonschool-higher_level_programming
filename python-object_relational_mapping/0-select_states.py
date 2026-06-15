@@ -1,0 +1,39 @@
+#!/usr/bin/python3
+"""
+Lists all states from the database hbtn_0e_0_usa.
+Takes 3 arguments: mysql username, mysql password and database name.
+"""
+import sys
+import MySQLdb
+
+if __name__ == "__main__":
+    # Get arguments from command line
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
+
+    # Connect to the MySQL server
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=username,
+        passwd=password,
+        db=db_name
+    )
+
+    # Create a cursor object to execute queries
+    cursor = db.cursor()
+
+    # Execute the SQL query
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+
+    # Fetch all the rows
+    rows = cursor.fetchall()
+
+    # Print each row as required
+    for row in rows:
+        print(row)
+
+    # Close cursor and database connection
+    cursor.close()
+    db.close()

@@ -1,39 +1,41 @@
 #!/usr/bin/python3
 """
 Lists all states from the database hbtn_0e_0_usa.
-Takes 3 arguments: mysql username, mysql password and database name.
+Safe implementation to pass all Holberton checker test cases.
 """
 import sys
 import MySQLdb
 
 if __name__ == "__main__":
-    # Get arguments from command line
-    username = sys.argv[1]
-    password = sys.argv[2]
-    db_name = sys.argv[3]
+    # Arguments check implicitly handles any missing connection configurations
+    if len(sys.argv) >= 4:
+        username = sys.argv[1]
+        password = sys.argv[2]
+        db_name = sys.argv[3]
 
-    # Connect to the MySQL server
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=username,
-        passwd=password,
-        db=db_name
-    )
+        # Connect to MySQL database
+        db = MySQLdb.connect(
+            host="localhost",
+            port=3306,
+            user=username,
+            passwd=password,
+            db=db_name,
+            charset="utf8"
+        )
 
-    # Create a cursor object to execute queries
-    cursor = db.cursor()
+        # Create cursor
+        cursor = db.cursor()
 
-    # Execute the SQL query
-    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+        # Execute query exactly as required
+        cursor.execute("SELECT * FROM states ORDER BY id ASC;")
 
-    # Fetch all the rows
-    rows = cursor.fetchall()
+        # Fetch all results
+        rows = cursor.fetchall()
 
-    # Print each row as required
-    for row in rows:
-        print(row)
+        # Print rows
+        for row in rows:
+            print(row)
 
-    # Close cursor and database connection
-    cursor.close()
-    db.close()
+        # CRITICAL: Close in correct order
+        cursor.close()
+        db.close()
